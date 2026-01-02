@@ -1,4 +1,6 @@
 import { DollarSign, Users, GraduationCap, Video, Network, Crown } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 
 const rewards = [
   {
@@ -45,27 +47,36 @@ const RewardsSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-6">
-            <Crown className="h-4 w-4" />
-            <span>Rewards & Inner Circle</span>
+        <ScrollReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-6">
+              <Crown className="h-4 w-4" />
+              <span>Rewards & Inner Circle</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+              Success unlocks <span className="text-gradient">exclusive access</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Winners don't just get funding. They get a launchpad for long-term success — 
+              mentorship, network, and resources that keep giving.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Success unlocks <span className="text-gradient">exclusive access</span>
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Winners don't just get funding. They get a launchpad for long-term success — 
-            mentorship, network, and resources that keep giving.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Rewards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {rewards.map((reward, index) => (
-            <div
+            <motion.div
               key={reward.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: [0.25, 0.4, 0.25, 1],
+              }}
               className="group relative p-6 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_60px_hsl(var(--primary)/0.1)]"
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Orbiting dot decoration */}
               <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/50 animate-pulse-glow" />
@@ -82,19 +93,21 @@ const RewardsSection = () => {
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {reward.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Bottom highlight */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm text-muted-foreground">
-              <span className="text-foreground font-medium">Next selection round:</span> Applications open now
-            </span>
+        <ScrollReveal delay={0.4}>
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm text-muted-foreground">
+                <span className="text-foreground font-medium">Next selection round:</span> Applications open now
+              </span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

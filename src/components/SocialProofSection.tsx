@@ -1,4 +1,6 @@
 import { Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 
 const testimonials = [
   {
@@ -38,21 +40,30 @@ const SocialProofSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Testimonials */}
         <div className="max-w-5xl mx-auto mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Founders who <span className="text-gradient">launched here</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Join a growing community of ambitious builders
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Founders who <span className="text-gradient">launched here</span>
+              </h2>
+              <p className="text-muted-foreground">
+                Join a growing community of ambitious builders
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <div
+              <motion.div
                 key={testimonial.author}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.15,
+                  ease: [0.25, 0.4, 0.25, 1],
+                }}
                 className="relative p-6 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Quote className="h-8 w-8 text-primary/30 mb-4" />
                 <p className="text-foreground mb-6 leading-relaxed">
@@ -71,29 +82,31 @@ const SocialProofSection = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Partners */}
-        <div className="border-t border-border/50 pt-16">
-          <div className="text-center mb-10">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider">
-              Backed by investors from
-            </p>
+        <ScrollReveal>
+          <div className="border-t border-border/50 pt-16">
+            <div className="text-center mb-10">
+              <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                Backed by investors from
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50">
+              {partners.map((partner) => (
+                <div
+                  key={partner}
+                  className="text-lg font-semibold text-muted-foreground hover:text-foreground transition-colors cursor-default"
+                >
+                  {partner}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50">
-            {partners.map((partner) => (
-              <div
-                key={partner}
-                className="text-lg font-semibold text-muted-foreground hover:text-foreground transition-colors cursor-default"
-              >
-                {partner}
-              </div>
-            ))}
-          </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import { DollarSign, Users, GraduationCap, Video, Network, Crown } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const rewards = [
   {
@@ -45,7 +47,7 @@ const RewardsSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-6">
             <Crown className="h-4 w-4" />
             <span>Rewards & Inner Circle</span>
@@ -57,44 +59,46 @@ const RewardsSection = () => {
             Winners don't just get funding. They get a launchpad for long-term success — 
             mentorship, network, and resources that keep giving.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Rewards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {rewards.map((reward, index) => (
-            <div
-              key={reward.title}
-              className="group relative p-6 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_60px_hsl(var(--primary)/0.1)]"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Orbiting dot decoration */}
-              <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/50 animate-pulse-glow" />
+            <ScrollReveal key={reward.title} delay={index * 0.1}>
+              <motion.div
+                className="group relative p-6 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_60px_hsl(var(--primary)/0.1)] h-full"
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {/* Orbiting dot decoration */}
+                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/50 animate-pulse-glow" />
 
-              {/* Icon with glow */}
-              <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110">
-                <reward.icon className="h-7 w-7 text-primary" />
-                <div className="absolute inset-0 rounded-xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+                {/* Icon with glow */}
+                <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110">
+                  <reward.icon className="h-7 w-7 text-primary" />
+                  <div className="absolute inset-0 rounded-xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
 
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                {reward.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {reward.description}
-              </p>
-            </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {reward.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {reward.description}
+                </p>
+              </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Bottom highlight */}
-        <div className="mt-16 text-center">
+        <ScrollReveal delay={0.6} className="mt-16 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-sm text-muted-foreground">
               <span className="text-foreground font-medium">Next selection round:</span> Applications open now
             </span>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

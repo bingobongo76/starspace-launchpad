@@ -1,6 +1,4 @@
 import { Star, Lightbulb, Users, Trophy, Rocket } from 'lucide-react';
-import { motion } from 'framer-motion';
-import ScrollReveal from './ScrollReveal';
 
 const steps = [
   {
@@ -43,16 +41,14 @@ const HowItWorksSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
-        <ScrollReveal>
-          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient">From spark to launch</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Five steps to transform your idea into a funded startup
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-gradient">From spark to launch</span>
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Five steps to transform your idea into a funded startup
+          </p>
+        </div>
 
         {/* Steps */}
         <div className="relative">
@@ -61,17 +57,10 @@ const HowItWorksSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={step.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: [0.25, 0.4, 0.25, 1],
-                }}
                 className="relative group"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Step card */}
                 <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-500 hover:bg-card hover:border-primary/30 hover:shadow-[0_0_40px_hsl(var(--primary)/0.1)] group-hover:scale-105">
@@ -106,7 +95,7 @@ const HowItWorksSection = () => {
                     </svg>
                   </div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

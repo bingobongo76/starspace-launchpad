@@ -1,6 +1,4 @@
 import { Globe, FileX, Users, Repeat, Zap, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
-import ScrollReveal from './ScrollReveal';
 
 const features = [
   {
@@ -44,32 +42,23 @@ const WhyStarspaceSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
-        <ScrollReveal>
-          <div className="max-w-2xl mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Why <span className="text-gradient">Starspace</span>?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Traditional accelerators have high barriers. We're building something different — 
-              accessible, community-powered, and designed for the next generation of founders.
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="max-w-2xl mb-16 md:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+            Why <span className="text-gradient">Starspace</span>?
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Traditional accelerators have high barriers. We're building something different — 
+            accessible, community-powered, and designed for the next generation of founders.
+          </p>
+        </div>
 
         {/* Feature grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: [0.25, 0.4, 0.25, 1],
-              }}
               className="group relative p-8 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:bg-card/50 hover:border-primary/30 hover:shadow-[0_0_50px_hsl(var(--primary)/0.08)]"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Gradient border on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
@@ -86,7 +75,7 @@ const WhyStarspaceSection = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

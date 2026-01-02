@@ -1,5 +1,4 @@
 import { Rocket, Star } from 'lucide-react';
-import ScrollReveal from './ScrollReveal';
 
 const Footer = () => {
   const footerLinks = {
@@ -32,9 +31,8 @@ const Footer = () => {
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
-      <ScrollReveal>
-        <div className="container mx-auto px-6 py-16">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
@@ -112,19 +110,18 @@ const Footer = () => {
           </div>
         </div>
 
-          {/* Bottom bar */}
-          <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2026 Starspace. All rights reserved.
-            </p>
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <span>Built with</span>
-              <Star className="h-3 w-3 text-primary fill-primary" />
-              <span>for founders everywhere</span>
-            </div>
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © 2026 Starspace. All rights reserved.
+          </p>
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <span>Built with</span>
+            <Star className="h-3 w-3 text-primary fill-primary" />
+            <span>for founders everywhere</span>
           </div>
         </div>
-      </ScrollReveal>
+      </div>
     </footer>
   );
 };

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const FinalCTASection = () => {
   return (
@@ -15,7 +16,13 @@ const FinalCTASection = () => {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-32 bg-gradient-to-t from-primary/50 via-primary/20 to-transparent rounded-full blur-sm" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+          className="max-w-3xl mx-auto text-center"
+        >
           {/* Decorative stars */}
           <div className="flex justify-center gap-2 mb-8">
             {[...Array(5)].map((_, i) => (
@@ -49,7 +56,7 @@ const FinalCTASection = () => {
             <div className="w-2 h-2 rounded-full bg-green-500" />
             <span>Free to join • No credit card required</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

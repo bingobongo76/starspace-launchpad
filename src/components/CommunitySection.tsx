@@ -1,5 +1,7 @@
 import { MessageCircle, ThumbsUp, GitBranch, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 
 const ideas = [
   {
@@ -49,10 +51,11 @@ const CommunitySection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Ideas evolve through <span className="text-gradient">collaboration</span>
-            </h2>
+          <ScrollReveal>
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                Ideas evolve through <span className="text-gradient">collaboration</span>
+              </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Every great startup begins with a raw idea. On Starspace, the community 
               helps you refine, validate, and strengthen your concept through open 
@@ -89,11 +92,12 @@ const CommunitySection = () => {
               </div>
             </div>
 
-            <Button variant="cta" className="group">
-              Explore all ideas
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Button>
-          </div>
+              <Button variant="cta" className="group">
+                Explore all ideas
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </div>
+          </ScrollReveal>
 
           {/* Right: Idea cards */}
           <div className="relative">
@@ -102,12 +106,17 @@ const CommunitySection = () => {
 
             <div className="relative space-y-4">
               {ideas.map((idea, index) => (
-                <div
+                <motion.div
                   key={idea.title}
-                  className="group p-5 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:bg-card hover:border-primary/30 hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] cursor-pointer"
-                  style={{
-                    transform: `translateX(${index % 2 === 0 ? '0' : '20px'})`,
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: index % 2 === 0 ? 0 : 20 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: [0.25, 0.4, 0.25, 1],
                   }}
+                  className="group p-5 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:bg-card hover:border-primary/30 hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] cursor-pointer"
                 >
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -143,7 +152,7 @@ const CommunitySection = () => {
                       <span>{idea.iterations} iterations</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

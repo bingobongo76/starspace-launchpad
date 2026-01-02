@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import ScrollReveal from './ScrollReveal';
 
 const roles = [
   { label: 'Technical', color: 'hsl(265, 89%, 66%)' },
@@ -117,7 +118,7 @@ const TeamFormationSection = () => {
           </div>
 
           {/* Right: Content */}
-          <div className="order-1 lg:order-2">
+          <ScrollReveal className="order-1 lg:order-2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Teams form <span className="text-gradient">organically</span>
             </h2>
@@ -149,7 +150,7 @@ const TeamFormationSection = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

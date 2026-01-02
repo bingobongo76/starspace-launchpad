@@ -29,7 +29,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto relative z-10 px-[26px] py-[20px]">
+      <div className="container mx-auto relative z-10 px-[26px] py-[40px]">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           

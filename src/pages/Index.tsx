@@ -1,11 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import StarField from '@/components/StarField';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
+import WhyStarspaceSection from '@/components/WhyStarspaceSection';
+import CommunitySection from '@/components/CommunitySection';
+import TeamFormationSection from '@/components/TeamFormationSection';
+import RewardsSection from '@/components/RewardsSection';
+import SocialProofSection from '@/components/SocialProofSection';
+import FinalCTASection from '@/components/FinalCTASection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="relative min-h-screen bg-background overflow-x-hidden">
+      {/* Animated star background */}
+      <StarField />
+
+      {/* Main content */}
+      <div className="relative z-10">
+        <Navbar />
+        <HeroSection />
+        <HowItWorksSection />
+        <WhyStarspaceSection />
+        <CommunitySection />
+        <TeamFormationSection />
+        <RewardsSection />
+        <SocialProofSection />
+        <FinalCTASection />
+        <Footer />
       </div>
     </div>
   );

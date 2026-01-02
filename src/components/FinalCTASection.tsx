@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const FinalCTASection = () => {
   return (
@@ -17,38 +19,63 @@ const FinalCTASection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           {/* Decorative stars */}
-          <div className="flex justify-center gap-2 mb-8">
-            {[...Array(5)].map((_, i) => (
-              <Sparkles
-                key={i}
-                className="h-5 w-5 text-primary animate-twinkle"
-                style={{ animationDelay: `${i * 0.2}s` }}
-              />
-            ))}
-          </div>
+          <ScrollReveal>
+            <div className="flex justify-center gap-2 mb-8">
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
+                >
+                  <Sparkles
+                    className="h-5 w-5 text-primary animate-twinkle"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Your idea is a star.
-            <br />
-            <span className="text-gradient">Let it shine.</span>
-          </h2>
+          <ScrollReveal delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Your idea is a star.
+              <br />
+              <span className="text-gradient">Let it shine.</span>
+            </h2>
+          </ScrollReveal>
 
-          <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl mx-auto">
-            Join thousands of founders who are building the future, together.
-          </p>
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl mx-auto">
+              Join thousands of founders who are building the future, together.
+            </p>
+          </ScrollReveal>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl" className="group w-full sm:w-auto">
-              <span className="relative z-10">Start on Starspace</span>
-              <ArrowRight className="relative z-10 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
+          <ScrollReveal delay={0.3}>
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Button variant="hero" size="xl" className="group w-full sm:w-auto">
+                <span className="relative z-10">Start on Starspace</span>
+                <ArrowRight className="relative z-10 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
+          </ScrollReveal>
 
           {/* Trust badge */}
-          <div className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <div className="w-2 h-2 rounded-full bg-green-500" />
-            <span>Free to join • No credit card required</span>
-          </div>
+          <ScrollReveal delay={0.4}>
+            <div className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+              <motion.div 
+                className="w-2 h-2 rounded-full bg-green-500"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span>Free to join • No credit card required</span>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

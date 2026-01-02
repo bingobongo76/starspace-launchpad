@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 
 const roles = [
   { label: 'Technical', color: 'hsl(265, 89%, 66%)' },
@@ -80,6 +82,21 @@ const TeamFormationSection = () => {
     requestAnimationFrame(draw);
   }, [hoveredNode]);
 
+  const featureCards = [
+    {
+      title: 'Skill-based matching',
+      description: 'Find technical, business, and creative co-founders who complement your strengths.',
+    },
+    {
+      title: 'Shared vision alignment',
+      description: 'Connect with people who are passionate about the same problem space.',
+    },
+    {
+      title: 'Natural collaboration',
+      description: 'Start working together on idea refinement before formalizing the team.',
+    },
+  ];
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
@@ -88,7 +105,7 @@ const TeamFormationSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Visual */}
-          <div className="relative order-2 lg:order-1">
+          <ScrollReveal direction="left" className="order-2 lg:order-1">
             <div className="aspect-square max-w-md mx-auto relative">
               {/* Glow backdrop */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
@@ -114,10 +131,10 @@ const TeamFormationSection = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right: Content */}
-          <div className="order-1 lg:order-2">
+          <ScrollReveal direction="right" className="order-1 lg:order-2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Teams form <span className="text-gradient">organically</span>
             </h2>
@@ -128,28 +145,22 @@ const TeamFormationSection = () => {
             </p>
 
             <div className="space-y-6">
-              <div className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm">
-                <h3 className="font-semibold text-foreground mb-2">Skill-based matching</h3>
-                <p className="text-sm text-muted-foreground">
-                  Find technical, business, and creative co-founders who complement your strengths.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm">
-                <h3 className="font-semibold text-foreground mb-2">Shared vision alignment</h3>
-                <p className="text-sm text-muted-foreground">
-                  Connect with people who are passionate about the same problem space.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm">
-                <h3 className="font-semibold text-foreground mb-2">Natural collaboration</h3>
-                <p className="text-sm text-muted-foreground">
-                  Start working together on idea refinement before formalizing the team.
-                </p>
-              </div>
+              {featureCards.map((card, index) => (
+                <motion.div
+                  key={card.title}
+                  className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm"
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                  whileHover={{ x: 5, borderColor: 'hsl(var(--primary) / 0.3)' }}
+                >
+                  <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
+                  <p className="text-sm text-muted-foreground">{card.description}</p>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

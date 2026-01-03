@@ -1,16 +1,38 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-200" />
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
 
-      {/* Constellation visual */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+  const orbY1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const orbY2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const constellationY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const constellationScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+  return (
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background gradient orbs with parallax */}
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow"
+        style={{ y: orbY1 }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow animation-delay-200"
+        style={{ y: orbY2 }}
+      />
+
+      {/* Constellation visual with parallax */}
+      <motion.div 
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ y: constellationY, scale: constellationScale }}
+      >
         <svg className="absolute w-full h-full opacity-20" viewBox="0 0 1000 1000">
           <line x1="200" y1="300" x2="350" y2="250" className="constellation-line" strokeDasharray="5,5" />
           <line x1="350" y1="250" x2="450" y2="350" className="constellation-line" strokeDasharray="5,5" />
@@ -28,9 +50,9 @@ const HeroSection = () => {
           <circle cx="700" cy="550" r="4" fill="hsl(var(--primary))" className="animate-pulse-glow animation-delay-600" />
           <circle cx="800" cy="650" r="3" fill="hsl(var(--star-white))" className="animate-twinkle animation-delay-600" />
         </svg>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto relative z-10 px-6 py-10">
+      <motion.div className="container mx-auto relative z-10 px-6 py-10" style={{ y: contentY }}>
         <div className="max-w-4xl mx-auto text-center">
           {/* Main headline */}
           <motion.h1 
@@ -90,9 +112,9 @@ const HeroSection = () => {
               <div className="text-3xl sm:text-4xl font-bold text-gradient">€2M+</div>
               <div className="text-sm text-muted-foreground mt-1">Rewards distributed</div>
             </div>
-          </motion.div>
+        </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div 

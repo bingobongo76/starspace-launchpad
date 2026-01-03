@@ -37,7 +37,7 @@ const StarField = () => {
           y: Math.random() * canvas.height,
           size: Math.random() * 1.5 + 0.5,
           opacity: Math.random() * 0.5 + 0.2,
-          twinkleSpeed: Math.random() * 0.02 + 0.01,
+          twinkleSpeed: Math.random() * 0.005 + 0.002,
           twinkleOffset: Math.random() * Math.PI * 2,
         });
       }

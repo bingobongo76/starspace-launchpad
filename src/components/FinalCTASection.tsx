@@ -3,58 +3,56 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import { useRef } from 'react';
-
 const FinalCTASection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
+  const {
+    scrollYProgress
+  } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-
   const orbY1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const orbY2 = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const rocketHeight = useTransform(scrollYProgress, [0, 1], [32, 200]);
-
-  return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden">
+  return <section ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden">
       {/* Background effects with parallax */}
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-primary/20 via-primary/5 to-transparent" />
-        <motion.div 
-          className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow"
-          style={{ y: orbY1 }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-1/4 w-[200px] h-[200px] bg-primary/10 rounded-full blur-[80px] animate-pulse-glow animation-delay-400"
-          style={{ y: orbY2 }}
-        />
+        <motion.div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow" style={{
+        y: orbY1
+      }} />
+        <motion.div className="absolute top-1/2 right-1/4 w-[200px] h-[200px] bg-primary/10 rounded-full blur-[80px] animate-pulse-glow animation-delay-400" style={{
+        y: orbY2
+      }} />
       </div>
 
       {/* Rocket visual with parallax growth */}
-      <motion.div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-t from-primary/50 via-primary/20 to-transparent rounded-full blur-sm"
-        style={{ height: rocketHeight }}
-      />
+      <motion.div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-t from-primary/50 via-primary/20 to-transparent rounded-full blur-sm" style={{
+      height: rocketHeight
+    }} />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           {/* Decorative stars */}
           <ScrollReveal>
             <div className="flex justify-center gap-2 mb-8">
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
-                >
-                  <Sparkles
-                    className="h-5 w-5 text-primary animate-twinkle"
-                    style={{ animationDelay: `${i * 0.2}s` }}
-                  />
-                </motion.div>
-              ))}
+              {[...Array(5)].map((_, i) => <motion.div key={i} initial={{
+              opacity: 0,
+              scale: 0
+            }} whileInView={{
+              opacity: 1,
+              scale: 1
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.3 + i * 0.1,
+              type: "spring",
+              stiffness: 200
+            }}>
+                  <Sparkles className="h-5 w-5 text-primary animate-twinkle" style={{
+                animationDelay: `${i * 0.2}s`
+              }} />
+                </motion.div>)}
             </div>
           </ScrollReveal>
 
@@ -73,11 +71,12 @@ const FinalCTASection = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
-            <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4" whileHover={{
+            scale: 1.02
+          }} transition={{
+            type: "spring",
+            stiffness: 300
+          }}>
               <Button variant="hero" size="xl" className="group w-full sm:w-auto">
                 <span className="relative z-10">Start on Starspace</span>
                 <ArrowRight className="relative z-10 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -88,18 +87,17 @@ const FinalCTASection = () => {
           {/* Trust badge */}
           <ScrollReveal delay={0.4}>
             <div className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <motion.div 
-                className="w-2 h-2 rounded-full bg-green-500"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <span>Free to join • No credit card required</span>
+              <motion.div className="w-2 h-2 rounded-full bg-green-500" animate={{
+              scale: [1, 1.2, 1]
+            }} transition={{
+              duration: 2,
+              repeat: Infinity
+            }} />
+              <span>Free to join • No payment required</span>
             </div>
           </ScrollReveal>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FinalCTASection;

@@ -1,3 +1,4 @@
+import NebulaBackground from '@/components/NebulaBackground';
 import StarField from '@/components/StarField';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -13,6 +14,9 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background overflow-x-hidden">
+      {/* Animated nebula background */}
+      <NebulaBackground />
+      
       {/* Animated star background */}
       <StarField />
 

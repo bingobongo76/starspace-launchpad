@@ -1,38 +1,29 @@
 import { motion } from 'framer-motion';
 import { Star, Lightbulb, Users, Trophy, Rocket } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-
-const steps = [
-  {
-    icon: Lightbulb,
-    title: 'Post your idea',
-    description: 'Share your raw idea. No pitch deck required.',
-  },
-  {
-    icon: Star,
-    title: 'Refine together',
-    description: 'Get feedback. Iterate. Watch your idea evolve.',
-  },
-  {
-    icon: Users,
-    title: 'Build your team',
-    description: 'Connect with passionate cofounders who share your vision.',
-  },
-  {
-    icon: Trophy,
-    title: 'Win selection',
-    description: 'The best idea + team combinations rise to the top.',
-  },
-  {
-    icon: Rocket,
-    title: 'Get rewarded',
-    description: 'Access investment, mentorship, and the Inner Circle.',
-  },
-];
-
+const steps = [{
+  icon: Lightbulb,
+  title: 'Post your idea',
+  description: 'Share your raw idea. No pitch deck required.'
+}, {
+  icon: Star,
+  title: 'Refine together',
+  description: 'Get feedback. Iterate. Watch your idea evolve.'
+}, {
+  icon: Users,
+  title: 'Build your team',
+  description: 'Connect with passionate cofounders who share your vision.'
+}, {
+  icon: Trophy,
+  title: 'Win selection',
+  description: 'The best idea + team combinations rise to the top.'
+}, {
+  icon: Rocket,
+  title: 'Get rewarded',
+  description: 'Access investment, mentorship, and the Inner Circle.'
+}];
 const HowItWorksSection = () => {
-  return (
-    <section id="how-it-works" className="relative py-24 md:py-32 overflow-hidden">
+  return <section id="how-it-works" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
 
@@ -53,17 +44,17 @@ const HowItWorksSection = () => {
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
-            {steps.map((step, index) => (
-              <ScrollReveal key={step.title} delay={index * 0.1}>
-                <motion.div
-                  className="relative group h-full"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
+            {steps.map((step, index) => <ScrollReveal key={step.title} delay={index * 0.1}>
+                <motion.div className="relative group h-full" whileHover={{
+              scale: 1.05
+            }} transition={{
+              type: "spring",
+              stiffness: 300
+            }}>
                   {/* Step card */}
                   <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-500 hover:bg-card hover:border-primary/30 hover:shadow-[0_0_40px_hsl(var(--primary)/0.1)] h-full">
                     {/* Step number */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-secondary border border-border flex items-center justify-center text-xs font-medium text-muted-foreground">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full border border-border flex items-center justify-center text-xs font-medium bg-primary text-primary-foreground">
                       {index + 1}
                     </div>
 
@@ -85,13 +76,10 @@ const HowItWorksSection = () => {
                     </p>
                   </div>
                 </motion.div>
-              </ScrollReveal>
-            ))}
+              </ScrollReveal>)}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HowItWorksSection;

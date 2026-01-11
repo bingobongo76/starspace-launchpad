@@ -55,9 +55,9 @@ const WhyStarspaceSection = () => {
         </ScrollReveal>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {features.map((feature, index) => (
-            <ScrollReveal key={feature.title} delay={index * 0.1}>
+            <ScrollReveal key={feature.title} delay={Math.floor(index / 2) * 0.15 + (index % 2) * 0.08}>
               <motion.div
                 className="group relative p-8 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:bg-card/50 hover:border-primary/30 hover:shadow-[0_0_50px_hsl(var(--primary)/0.08)] h-full"
                 whileHover={{ y: -5 }}

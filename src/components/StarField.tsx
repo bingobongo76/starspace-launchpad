@@ -55,7 +55,7 @@ const StarField = () => {
         ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, currentOpacity)})`;
         ctx.fill();
 
-        // Add subtle glow for larger stars
+        // Add subtle glow for larger stars - mix of green and purple
         if (star.size > 1) {
           ctx.beginPath();
           ctx.arc(star.x, star.y, star.size * 2, 0, Math.PI * 2);
@@ -63,7 +63,12 @@ const StarField = () => {
             star.x, star.y, 0,
             star.x, star.y, star.size * 2
           );
-          gradient.addColorStop(0, `rgba(126, 231, 135, ${currentOpacity * 0.3})`);
+          // ~80% green stars, ~20% purple stars for variety
+          const isGreenStar = (star.x + star.y) % 5 > 0;
+          const glowColor = isGreenStar 
+            ? `rgba(126, 231, 135, ${currentOpacity * 0.3})`
+            : `rgba(167, 139, 250, ${currentOpacity * 0.25})`;
+          gradient.addColorStop(0, glowColor);
           gradient.addColorStop(1, 'transparent');
           ctx.fillStyle = gradient;
           ctx.fill();

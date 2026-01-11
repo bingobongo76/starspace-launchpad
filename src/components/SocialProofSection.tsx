@@ -6,7 +6,7 @@ const testimonials = [
   {
     quote: "Starspace helped me find the perfect co-founder. Our idea went from a napkin sketch to funded startup in 6 months.",
     author: "Sarah Chen",
-    role: "Founder, DataBridge AI",
+    role: "Founder & CEO, Cledion",
     avatar: "SC",
   },
   {

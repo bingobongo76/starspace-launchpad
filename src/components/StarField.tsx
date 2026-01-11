@@ -63,7 +63,7 @@ const StarField = () => {
             star.x, star.y, 0,
             star.x, star.y, star.size * 2
           );
-          gradient.addColorStop(0, `rgba(167, 139, 250, ${currentOpacity * 0.3})`);
+          gradient.addColorStop(0, `rgba(126, 231, 135, ${currentOpacity * 0.3})`);
           gradient.addColorStop(1, 'transparent');
           ctx.fillStyle = gradient;
           ctx.fill();

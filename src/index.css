@@ -18,48 +18,48 @@
     --popover: 230 25% 8%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary: Electric Violet */
-    --primary: 265 89% 66%;
+    /* Primary: Forest Green */
+    --primary: 131 22% 30%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Deep Space Blue */
-    --secondary: 230 25% 12%;
+    /* Secondary: Deep Space with Green Tint */
+    --secondary: 150 15% 12%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 230 20% 15%;
-    --muted-foreground: 230 15% 60%;
+    --muted: 150 10% 15%;
+    --muted-foreground: 150 10% 60%;
 
-    /* Accent: Cosmic Blue */
-    --accent: 220 90% 56%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Bright Mint */
+    --accent: 127 65% 70%;
+    --accent-foreground: 131 22% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 20% 18%;
-    --input: 230 20% 15%;
-    --ring: 265 89% 66%;
+    --border: 150 15% 18%;
+    --input: 150 10% 15%;
+    --ring: 131 22% 30%;
 
     --radius: 0.75rem;
 
     /* Custom Starspace tokens */
-    --glow-purple: 265 89% 66%;
-    --glow-blue: 220 90% 56%;
+    --glow-green: 127 65% 70%;
+    --glow-mint: 131 40% 45%;
     --star-white: 0 0% 100%;
     --space-deep: 230 30% 3%;
     --space-mid: 230 25% 8%;
-    --constellation-line: 230 30% 25%;
+    --constellation-line: 150 20% 25%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(230 30% 3%) 0%, hsl(250 30% 8%) 50%, hsl(230 25% 5%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(265 89% 66% / 0.15) 0%, transparent 70%);
+    --gradient-hero: linear-gradient(135deg, hsl(230 30% 3%) 0%, hsl(140 20% 6%) 50%, hsl(230 25% 5%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(131 22% 30% / 0.15) 0%, transparent 70%);
     --gradient-card: linear-gradient(145deg, hsl(230 25% 10%) 0%, hsl(230 25% 6%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(265 50% 85%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(265 89% 60%) 0%, hsl(220 90% 56%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(127 60% 80%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(131 22% 30%) 0%, hsl(127 65% 70%) 100%);
 
     /* Shadows */
-    --shadow-glow: 0 0 60px hsl(265 89% 66% / 0.2);
-    --shadow-glow-sm: 0 0 30px hsl(265 89% 66% / 0.15);
+    --shadow-glow: 0 0 60px hsl(127 65% 70% / 0.2);
+    --shadow-glow-sm: 0 0 30px hsl(127 65% 70% / 0.15);
     --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.3);
   }
 
@@ -119,7 +119,7 @@
   /* Text gradient */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(270 60% 80%) 100%);
+    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(127 60% 80%) 100%);
   }
 
   /* CTA gradient button */

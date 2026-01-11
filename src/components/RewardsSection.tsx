@@ -81,9 +81,6 @@ const RewardsSection = () => {
         </div>
 
         {/* Bottom highlight */}
-        <ScrollReveal delay={0.6} className="mt-16 text-center">
-          
-        </ScrollReveal>
       </div>
     </section>;
 };

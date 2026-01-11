@@ -24,11 +24,7 @@ const testimonials = [
 ];
 
 const partners = [
-  'TechVentures',
-  'Seedcamp',
-  'Founders Fund',
-  'a16z Scout',
-  'Entrepreneur First',
+  'Coming Soon',
 ];
 
 const SocialProofSection = () => {

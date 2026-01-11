@@ -24,7 +24,7 @@ const testimonials = [
 ];
 
 const partners = [
-  'Coming Soon',
+  'Investors Coming Soon',
 ];
 
 const SocialProofSection = () => {

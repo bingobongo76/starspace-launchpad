@@ -1,5 +1,6 @@
 import NebulaBackground from '@/components/NebulaBackground';
 import StarField from '@/components/StarField';
+import ShootingStars from '@/components/ShootingStars';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
@@ -19,6 +20,9 @@ const Index = () => {
       
       {/* Animated star background */}
       <StarField />
+
+      {/* Purple shooting stars */}
+      <ShootingStars />
 
       {/* Main content */}
       <div className="relative z-10">

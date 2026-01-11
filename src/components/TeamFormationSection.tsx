@@ -1,44 +1,59 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
-
-const roles = [
-  { label: 'Technical', color: 'hsl(265, 89%, 66%)' },
-  { label: 'Business', color: 'hsl(220, 90%, 56%)' },
-  { label: 'Design', color: 'hsl(340, 80%, 60%)' },
-  { label: 'Marketing', color: 'hsl(160, 70%, 50%)' },
-];
-
+const roles = [{
+  label: 'Technical',
+  color: 'hsl(265, 89%, 66%)'
+}, {
+  label: 'Business',
+  color: 'hsl(220, 90%, 56%)'
+}, {
+  label: 'Design',
+  color: 'hsl(340, 80%, 60%)'
+}, {
+  label: 'Marketing',
+  color: 'hsl(160, 70%, 50%)'
+}];
 const TeamFormationSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
-    const nodes = [
-      { x: 150, y: 120, role: 0, connected: [1, 2] },
-      { x: 300, y: 80, role: 1, connected: [0, 2, 3] },
-      { x: 250, y: 200, role: 2, connected: [0, 1, 3] },
-      { x: 400, y: 160, role: 3, connected: [1, 2] },
-    ];
-
+    const nodes = [{
+      x: 150,
+      y: 120,
+      role: 0,
+      connected: [1, 2]
+    }, {
+      x: 300,
+      y: 80,
+      role: 1,
+      connected: [0, 2, 3]
+    }, {
+      x: 250,
+      y: 200,
+      role: 2,
+      connected: [0, 1, 3]
+    }, {
+      x: 400,
+      y: 160,
+      role: 3,
+      connected: [1, 2]
+    }];
     const draw = (time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw connections
       nodes.forEach((node, i) => {
-        node.connected.forEach((targetIndex) => {
+        node.connected.forEach(targetIndex => {
           if (targetIndex > i) {
             const target = nodes[targetIndex];
             const gradient = ctx.createLinearGradient(node.x, node.y, target.x, target.y);
             gradient.addColorStop(0, `${roles[node.role].color}40`);
             gradient.addColorStop(1, `${roles[target.role].color}40`);
-
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(target.x, target.y);
@@ -75,30 +90,21 @@ const TeamFormationSection = () => {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
         ctx.fill();
       });
-
       requestAnimationFrame(draw);
     };
-
     requestAnimationFrame(draw);
   }, [hoveredNode]);
-
-  const featureCards = [
-    {
-      title: 'Skill-based matching',
-      description: 'Find technical, business, and creative co-founders who complement your strengths.',
-    },
-    {
-      title: 'Shared vision alignment',
-      description: 'Connect with people who are passionate about the same problem space.',
-    },
-    {
-      title: 'Natural collaboration',
-      description: 'Start working together on idea refinement before formalizing the team.',
-    },
-  ];
-
-  return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+  const featureCards = [{
+    title: 'Skill-based matching',
+    description: 'Find technical, business, and creative co-founders who complement your strengths.'
+  }, {
+    title: 'Shared vision alignment',
+    description: 'Connect with people who are passionate about the same problem space.'
+  }, {
+    title: 'Natural collaboration',
+    description: 'Start working together on idea refinement before formalizing the team.'
+  }];
+  return <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent" />
 
@@ -111,24 +117,16 @@ const TeamFormationSection = () => {
               <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
 
               {/* Canvas constellation */}
-              <canvas
-                ref={canvasRef}
-                width={500}
-                height={300}
-                className="w-full h-auto"
-              />
+              <canvas ref={canvasRef} width={500} height={300} className="w-full h-auto" />
 
               {/* Role legend */}
               <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-4 flex-wrap">
-                {roles.map((role) => (
-                  <div key={role.label} className="flex items-center gap-2">
-                    <div
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: role.color }}
-                    />
+                {roles.map(role => <div key={role.label} className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full" style={{
+                  backgroundColor: role.color
+                }} />
                     <span className="text-sm text-muted-foreground">{role.label}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </ScrollReveal>
@@ -139,32 +137,32 @@ const TeamFormationSection = () => {
               Teams form <span className="text-gradient">organically</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Like stars forming constellations, the right people naturally connect 
-              around compelling ideas. Our matching system considers skills, interests, 
-              and working styles to suggest ideal co-founders.
+              Like stars forming constellations, the right people naturally connect around compelling ideas. 
             </p>
 
             <div className="space-y-6">
-              {featureCards.map((card, index) => (
-                <motion.div
-                  key={card.title}
-                  className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.5 }}
-                  whileHover={{ x: 5, borderColor: 'hsl(var(--primary) / 0.3)' }}
-                >
+              {featureCards.map((card, index) => <motion.div key={card.title} className="p-5 rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm" initial={{
+              opacity: 0,
+              x: 30
+            }} whileInView={{
+              opacity: 1,
+              x: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: index * 0.15,
+              duration: 0.5
+            }} whileHover={{
+              x: 5,
+              borderColor: 'hsl(var(--primary) / 0.3)'
+            }}>
                   <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
                   <p className="text-sm text-muted-foreground">{card.description}</p>
-                </motion.div>
-              ))}
+                </motion.div>)}
             </div>
           </ScrollReveal>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TeamFormationSection;

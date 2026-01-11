@@ -1,35 +1,32 @@
 import { motion } from 'framer-motion';
-import { Globe, FileX, Users, Repeat, Zap, Shield } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
-const features = [
+const eliminatedBarriers = [
   {
-    icon: Shield,
     title: 'No elite gatekeeping',
     description: "Open to everyone with an idea. Your background doesn't determine your future.",
   },
   {
-    icon: FileX,
     title: 'No pitch decks required',
     description: 'Start with a raw idea. Let the community help you shape it.',
   },
+];
+
+const offerings = [
   {
-    icon: Globe,
     title: 'Fully online & global',
     description: 'Connect with founders and mentors worldwide. No location barriers.',
   },
   {
-    icon: Users,
     title: 'Community-driven validation',
     description: 'Real feedback from real people. Not just investor opinions.',
   },
   {
-    icon: Repeat,
     title: 'Continuous opportunities',
     description: 'Not batch-based. Join and participate anytime.',
   },
   {
-    icon: Zap,
     title: 'Fast & frictionless',
     description: 'Post today, get feedback tomorrow. Move at startup speed.',
   },
@@ -54,33 +51,79 @@ const WhyStarspaceSection = () => {
           </p>
         </ScrollReveal>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {features.map((feature, index) => (
-            <ScrollReveal key={feature.title} delay={Math.floor(index / 2) * 0.15 + (index % 2) * 0.08}>
-              <motion.div
-                className="group relative p-8 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:bg-card/50 hover:border-primary/30 hover:shadow-[0_0_50px_hsl(var(--primary)/0.08)] h-full"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {/* Gradient border on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
-
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
-                  <feature.icon className="h-6 w-6 text-primary" />
+        {/* Two-column layout: Eliminate vs Offer */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* What We Eliminate Column */}
+          <div className="space-y-6">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <X className="h-4 w-4 text-red-400" />
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
+                <h3 className="text-lg font-medium text-muted-foreground">What We Eliminate</h3>
+              </div>
             </ScrollReveal>
-          ))}
+            
+            {eliminatedBarriers.map((item, index) => (
+              <ScrollReveal key={item.title} delay={index * 0.1}>
+                <motion.div
+                  className="group relative p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-sm transition-all duration-500 hover:bg-red-500/10 hover:border-red-500/30"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110">
+                      <X className="h-5 w-5 text-red-400" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
+                        {item.title}
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* What We Offer Column */}
+          <div className="space-y-6">
+            <ScrollReveal delay={0.1}>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                  <Check className="h-4 w-4 text-emerald-400" />
+                </div>
+                <h3 className="text-lg font-medium text-muted-foreground">What We Offer</h3>
+              </div>
+            </ScrollReveal>
+            
+            {offerings.map((item, index) => (
+              <ScrollReveal key={item.title} delay={0.1 + index * 0.1}>
+                <motion.div
+                  className="group relative p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm transition-all duration-500 hover:bg-emerald-500/10 hover:border-emerald-500/30"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110">
+                      <Check className="h-5 w-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
+                        {item.title}
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

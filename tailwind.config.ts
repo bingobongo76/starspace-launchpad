@@ -56,8 +56,8 @@ export default {
           mid: "hsl(var(--space-mid))",
         },
         glow: {
-          purple: "hsl(var(--glow-purple))",
-          blue: "hsl(var(--glow-blue))",
+          green: "hsl(var(--glow-green))",
+          mint: "hsl(var(--glow-mint))",
         },
         star: {
           white: "hsl(var(--star-white))",

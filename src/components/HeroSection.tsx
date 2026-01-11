@@ -81,8 +81,7 @@ const HeroSection = () => {
           delay: 0.4,
           ease: [0.21, 0.47, 0.32, 0.98]
         }}>
-            Post an idea. Build a team. Get rewarded. 
-Join the community where raw ideas become funded startups.
+            Join the community where raw ideas become funded startups.
           </motion.p>
 
           {/* CTA Buttons */}

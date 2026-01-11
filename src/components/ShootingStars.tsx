@@ -20,7 +20,7 @@ const ShootingStars = () => {
         startX: Math.random() * 100,
         startY: Math.random() * 40,
         angle: 30 + Math.random() * 30, // 30-60 degrees
-        duration: 0.8 + Math.random() * 0.6, // 0.8-1.4 seconds
+        duration: 1.8 + Math.random() * 1.2, // 1.8-3 seconds (slower)
         delay: 0,
       };
 
@@ -35,7 +35,7 @@ const ShootingStars = () => {
     // Create shooting stars at random intervals
     const createStarLoop = () => {
       createShootingStar();
-      const nextInterval = 2000 + Math.random() * 4000; // 2-6 seconds between stars
+      const nextInterval = 4000 + Math.random() * 5000; // 4-9 seconds between stars (slower)
       setTimeout(createStarLoop, nextInterval);
     };
 
@@ -61,32 +61,34 @@ const ShootingStars = () => {
             className="shooting-star"
             style={{
               animation: `shoot ${star.duration}s ease-out forwards`,
+              filter: 'drop-shadow(0 0 8px rgba(167, 139, 250, 0.8)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.6))',
             }}
           >
             {/* Star head */}
             <div 
-              className="absolute w-2 h-2 rounded-full"
+              className="absolute w-3 h-3 rounded-full"
               style={{
-                background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(167, 139, 250, 0.8) 50%, transparent 100%)',
-                boxShadow: '0 0 10px rgba(167, 139, 250, 0.8), 0 0 20px rgba(167, 139, 250, 0.5), 0 0 30px rgba(139, 92, 246, 0.3)',
+                background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(200, 180, 255, 0.9) 40%, rgba(167, 139, 250, 0.6) 70%, transparent 100%)',
+                boxShadow: '0 0 15px rgba(167, 139, 250, 1), 0 0 30px rgba(167, 139, 250, 0.8), 0 0 50px rgba(139, 92, 246, 0.5), 0 0 70px rgba(139, 92, 246, 0.3)',
               }}
             />
             {/* Star tail */}
             <div 
-              className="absolute h-[2px] -left-24 top-1/2 -translate-y-1/2"
+              className="absolute h-[3px] -left-32 top-1/2 -translate-y-1/2"
               style={{
-                width: '100px',
-                background: 'linear-gradient(90deg, transparent 0%, rgba(167, 139, 250, 0.1) 30%, rgba(167, 139, 250, 0.5) 70%, rgba(255,255,255,0.8) 100%)',
+                width: '130px',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.2) 20%, rgba(167, 139, 250, 0.6) 60%, rgba(200, 180, 255, 0.9) 90%, rgba(255,255,255,1) 100%)',
                 filter: 'blur(1px)',
+                boxShadow: '0 0 10px rgba(167, 139, 250, 0.5)',
               }}
             />
             {/* Outer glow trail */}
             <div 
-              className="absolute h-[6px] -left-32 top-1/2 -translate-y-1/2"
+              className="absolute h-[10px] -left-40 top-1/2 -translate-y-1/2"
               style={{
-                width: '130px',
-                background: 'linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.05) 40%, rgba(167, 139, 250, 0.2) 80%, transparent 100%)',
-                filter: 'blur(3px)',
+                width: '160px',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.1) 30%, rgba(167, 139, 250, 0.3) 70%, rgba(167, 139, 250, 0.5) 100%)',
+                filter: 'blur(4px)',
               }}
             />
           </div>

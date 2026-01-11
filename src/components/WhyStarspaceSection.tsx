@@ -11,6 +11,14 @@ const eliminatedBarriers = [
     title: 'No pitch decks required',
     description: 'Start with a raw idea. Let the community help you shape it.',
   },
+  {
+    title: 'No relocation required',
+    description: "Build from anywhere. Traditional accelerators want you in their city — we don't.",
+  },
+  {
+    title: 'No waiting for batches',
+    description: 'Jump in anytime. No application windows, no cohort schedules to wait for.',
+  },
 ];
 
 const offerings = [

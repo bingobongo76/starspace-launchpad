@@ -20,7 +20,7 @@ const ShootingStars = () => {
         startX: Math.random() * 100,
         startY: Math.random() * 40,
         angle: 30 + Math.random() * 30, // 30-60 degrees
-        duration: 1.8 + Math.random() * 1.2, // 1.8-3 seconds (slower)
+        duration: 3 + Math.random() * 2, // 3-5 seconds (much slower)
         delay: 0,
       };
 
@@ -35,7 +35,7 @@ const ShootingStars = () => {
     // Create shooting stars at random intervals
     const createStarLoop = () => {
       createShootingStar();
-      const nextInterval = 4000 + Math.random() * 5000; // 4-9 seconds between stars (slower)
+      const nextInterval = 6000 + Math.random() * 8000; // 6-14 seconds between stars
       setTimeout(createStarLoop, nextInterval);
     };
 

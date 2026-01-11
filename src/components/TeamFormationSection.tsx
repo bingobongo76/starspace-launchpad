@@ -23,8 +23,8 @@ const TeamFormationSection = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const nodes = [{
-      x: 100,
-      y: 100,
+      x: 150,
+      y: 120,
       role: 0,
       connected: [1, 2]
     }, {
@@ -33,13 +33,13 @@ const TeamFormationSection = () => {
       role: 1,
       connected: [0, 2, 3]
     }, {
-      x: 180,
-      y: 260,
+      x: 250,
+      y: 200,
       role: 2,
       connected: [0, 1, 3]
     }, {
-      x: 320,
-      y: 220,
+      x: 400,
+      y: 160,
       role: 3,
       connected: [1, 2]
     }];
@@ -112,12 +112,12 @@ const TeamFormationSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Visual */}
           <ScrollReveal direction="left" className="order-2 lg:order-1">
-            <div className="max-w-md mx-auto relative">
+            <div className="aspect-square max-w-md mx-auto relative">
               {/* Glow backdrop */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
 
               {/* Canvas constellation */}
-              <canvas ref={canvasRef} width={400} height={340} className="w-full h-auto" />
+              <canvas ref={canvasRef} width={500} height={300} className="w-full h-auto" />
 
               {/* Role legend */}
               <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-4 flex-wrap">

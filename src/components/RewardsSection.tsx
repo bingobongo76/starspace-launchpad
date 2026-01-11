@@ -1,43 +1,33 @@
 import { motion } from 'framer-motion';
 import { DollarSign, Users, GraduationCap, Video, Network, Crown } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-
-const rewards = [
-  {
-    icon: DollarSign,
-    title: 'Investment & Prize Money',
-    description: 'Seed funding to launch your validated idea',
-  },
-  {
-    icon: Users,
-    title: 'Direct Investor Access',
-    description: 'Connect with VCs and angel investors',
-  },
-  {
-    icon: Crown,
-    title: 'Inner Circle Membership',
-    description: 'Join an exclusive founder community',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Mentoring & Workshops',
-    description: 'Learn from successful entrepreneurs',
-  },
-  {
-    icon: Video,
-    title: 'Exclusive Content',
-    description: 'Access premium articles and videos',
-  },
-  {
-    icon: Network,
-    title: 'Founder Network',
-    description: 'Lifetime access to our alumni network',
-  },
-];
-
+const rewards = [{
+  icon: DollarSign,
+  title: 'Investment & Prize Money',
+  description: 'Seed funding to launch your validated idea'
+}, {
+  icon: Users,
+  title: 'Direct Investor Access',
+  description: 'Connect with VCs and angel investors'
+}, {
+  icon: Crown,
+  title: 'Inner Circle Membership',
+  description: 'Join an exclusive founder community'
+}, {
+  icon: GraduationCap,
+  title: 'Mentoring & Workshops',
+  description: 'Learn from successful entrepreneurs'
+}, {
+  icon: Video,
+  title: 'Exclusive Content',
+  description: 'Access premium articles and videos'
+}, {
+  icon: Network,
+  title: 'Founder Network',
+  description: 'Lifetime access to our alumni network'
+}];
 const RewardsSection = () => {
-  return (
-    <section id="rewards" className="relative py-24 md:py-32 overflow-hidden">
+  return <section id="rewards" className="relative py-24 md:py-32 overflow-hidden">
       {/* Premium background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-primary/10 via-transparent to-transparent" />
@@ -63,13 +53,14 @@ const RewardsSection = () => {
 
         {/* Rewards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {rewards.map((reward, index) => (
-            <ScrollReveal key={reward.title} delay={index * 0.1}>
-              <motion.div
-                className="group relative p-6 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_60px_hsl(var(--primary)/0.1)] h-full"
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+          {rewards.map((reward, index) => <ScrollReveal key={reward.title} delay={index * 0.1}>
+              <motion.div className="group relative p-6 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_60px_hsl(var(--primary)/0.1)] h-full" whileHover={{
+            y: -5,
+            scale: 1.02
+          }} transition={{
+            type: "spring",
+            stiffness: 300
+          }}>
                 {/* Orbiting dot decoration */}
                 <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/50 animate-pulse-glow" />
 
@@ -86,22 +77,14 @@ const RewardsSection = () => {
                   {reward.description}
                 </p>
               </motion.div>
-            </ScrollReveal>
-          ))}
+            </ScrollReveal>)}
         </div>
 
         {/* Bottom highlight */}
         <ScrollReveal delay={0.6} className="mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm text-muted-foreground">
-              <span className="text-foreground font-medium">Next selection round:</span> Applications open now
-            </span>
-          </div>
+          
         </ScrollReveal>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default RewardsSection;

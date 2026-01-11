@@ -119,16 +119,16 @@ Join the community where raw ideas become funded startups.
           ease: [0.21, 0.47, 0.32, 0.98]
         }}>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-gradient">500+</div>
-              <div className="text-sm text-muted-foreground mt-1">Ideas posted</div>
+              <div className="text-3xl sm:text-4xl font-bold text-gradient">0</div>
+              <div className="text-sm text-muted-foreground mt-1">Barriers to entry</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-gradient">120+</div>
-              <div className="text-sm text-muted-foreground mt-1">Teams formed</div>
+              <div className="text-3xl sm:text-4xl font-bold text-gradient">100%</div>
+              <div className="text-sm text-muted-foreground mt-1">Remote & Global</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-gradient">€2M+</div>
-              <div className="text-sm text-muted-foreground mt-1">Rewards distributed</div>
+              <div className="text-3xl sm:text-4xl font-bold text-gradient">24/7</div>
+              <div className="text-sm text-muted-foreground mt-1">Access</div>
             </div>
         </motion.div>
         </div>

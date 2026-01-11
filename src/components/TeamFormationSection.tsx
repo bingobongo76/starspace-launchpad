@@ -106,7 +106,7 @@ const TeamFormationSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Visual */}
           <ScrollReveal direction="left" className="order-2 lg:order-1">
-            <div className="aspect-square max-w-md mx-auto relative">
+            <div className="w-full max-w-lg mx-auto relative">
               {/* Glow backdrop */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
 
@@ -115,7 +115,7 @@ const TeamFormationSection = () => {
                 ref={canvasRef}
                 width={500}
                 height={300}
-                className="w-full h-auto"
+                className="w-full h-auto min-h-[200px]"
               />
 
               {/* Role legend */}

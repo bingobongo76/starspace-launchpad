@@ -110,8 +110,8 @@ const Footer = () => {
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
             <span>Built for</span>
             <Star className="h-3 w-3 text-primary fill-primary" />
-            <span>
-          </span>
+            <Star className="h-3 w-3 text-primary fill-primary" />
+            <Star className="h-3 w-3 text-primary fill-primary" />
           </div>
         </div>
       </div>
